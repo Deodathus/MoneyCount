@@ -1,8 +1,8 @@
 ﻿using MoneyCount.app.core.contracts.state;
 
-namespace MoneyCount.app.core.user.states.register
+namespace MoneyCount.app.core.user.states.login
 {
-    public class RegisterState : IState
+    public class LoggedInState : IState
     {
         public IState GetState()
         {

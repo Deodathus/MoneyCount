@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MoneyCount.app.core.filesystem.contracts.services;
 using MoneyCount.app.core.filesystem.services;
+using MoneyCount.app.core.user;
 using MoneyCount.app.core.user.contracts.repositories;
 using MoneyCount.app.core.user.contracts.services;
 using MoneyCount.app.core.user.controllers;
@@ -13,13 +14,15 @@ namespace MoneyCount.app.core
     public static class Builder
     {
         private static readonly Dictionary<string, object> MainServices = new Dictionary<string, object>();
+        private static readonly Dictionary<string, object> StateControllers = new Dictionary<string, object>();
         private static readonly Dictionary<string, object> Repositories = new Dictionary<string, object>();
         private static readonly Dictionary<string, object> Services = new Dictionary<string, object>();
         private static readonly Dictionary<string, object> Controllers = new Dictionary<string, object>();
-        
+
         public static void Build()
         {
             BuildMainServices();
+            BuildStateControllers();
             BuildRepositories();
             BuildServices();
             BuildControllers();
@@ -31,22 +34,37 @@ namespace MoneyCount.app.core
             MainServices.Add(typeof(IFileService).ToString(), fs);
         }
 
+        private static void BuildStateControllers()
+        {
+            StateController usc = new StateController();
+            StateControllers.Add(typeof(StateController).ToString(), usc);
+            
+            account.StateController asc = new account.StateController();
+            StateControllers.Add(typeof(account.StateController).ToString(), asc);
+        }
+
         private static void BuildRepositories()
         {
-            IRepository ufr = new FileRepository((IFileService) MainServices[typeof(IFileService).ToString()]);
-            Repositories.Add(typeof(IRepository).ToString(), ufr);
+            IUserRepository ufr = new FileUserRepository((IFileService) MainServices[typeof(IFileService).ToString()]);
+            Repositories.Add(typeof(IUserRepository).ToString(), ufr);
         }
 
         private static void BuildServices()
         {
-            IRegister urs = new Register((IRepository) Repositories[typeof(IRepository).ToString()]);
-            Services.Add(typeof(IRegister).ToString(), urs);
+            IRegisterService urs = new RegisterService((IUserRepository) Repositories[typeof(IUserRepository).ToString()]);
+            Services.Add(typeof(IRegisterService).ToString(), urs);
+            
+            ILoginService uls = new LoginService((IUserRepository) Repositories[typeof(IUserRepository).ToString()]);
+            Services.Add(typeof(ILoginService).ToString(), uls);
         }
 
         private static void BuildControllers()
         {
-            RegisterController urc = new RegisterController((IRegister) Services[typeof(IRegister).ToString()]);
+            RegisterController urc = new RegisterController((IRegisterService) Services[typeof(IRegisterService).ToString()]);
             Controllers.Add(typeof(RegisterController).ToString(), urc);
+            
+            LoginController ulc = new LoginController((ILoginService) Services[typeof(ILoginService).ToString()]);
+            Controllers.Add(typeof(LoginController).ToString(), ulc);
         }
 
         public static object GetMainService(Type type)
@@ -54,6 +72,19 @@ namespace MoneyCount.app.core
             try
             {
                 return MainServices[type.ToString()];
+            }
+            catch (KeyNotFoundException e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public static object GetStateController(Type type)
+        {
+            try
+            {
+                return StateControllers[type.ToString()];
             }
             catch (KeyNotFoundException e)
             {

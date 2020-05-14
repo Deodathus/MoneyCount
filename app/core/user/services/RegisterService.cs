@@ -4,18 +4,18 @@ using MoneyCount.app.core.user.dto;
 
 namespace MoneyCount.app.core.user.services
 {
-    public class Register : IRegister
+    public class RegisterService : IRegisterService
     {
-        private readonly IRepository _repository;
+        private readonly IUserRepository _userRepository;
 
-        public Register(IRepository repository)
+        public RegisterService(IUserRepository userRepository)
         {
-            _repository = repository;
+            _userRepository = userRepository;
         }
 
         public void RegisterUser(User user)
         {
-            _repository.Add(user);
+            _userRepository.Add(user);
         }
     }
 }

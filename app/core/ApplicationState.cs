@@ -26,7 +26,7 @@ namespace MoneyCount.app.core
 
         private static IStateController GetDefaultStateController()
         {
-            return new StateController();
+            return (StateController) Builder.GetStateController(typeof(StateController));
         }
     }
 }

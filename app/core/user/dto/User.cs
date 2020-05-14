@@ -5,22 +5,20 @@ namespace MoneyCount.app.core.user.dto
 {
     public class User
     {
-        private static int _count = 1;
-        
         private readonly int _id;
         private string _name;
         private readonly string _password;
 
         private Account _account;
 
-        public User(string name, string password)
+        public User(string name, string password, int id = default)
         {
-            _id = _count;
             _name = name;
             _password = password;
 
+            _id = id;
+
             RegisterAccount();
-            _count++;
         }
 
         private void RegisterAccount()
@@ -40,8 +38,18 @@ namespace MoneyCount.app.core.user.dto
 
         public string GetPassword()
         {
+            return EncodePassword(_password);
+        }
+
+        public bool CheckPassword(string pass)
+        {
+            return EncodePassword(pass) == _password;
+        }
+
+        private string EncodePassword(string pass)
+        {
             string password = "";
-            byte[] passBytes = Encoding.ASCII.GetBytes(_password);
+            byte[] passBytes = Encoding.ASCII.GetBytes(pass);
 
             foreach (byte passByte in passBytes)
             {
