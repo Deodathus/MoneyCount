@@ -26,7 +26,6 @@ namespace MoneyCount.app.core.user.dto
         private void RegisterAccount()
         {
             _account = new Account(this);
-            Application.AddUser(this);
         }
 
         public int GetId()

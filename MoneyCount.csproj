@@ -10,8 +10,7 @@
       <Folder Include="app\core\account\controllers" />
       <Folder Include="app\core\account\repositories" />
       <Folder Include="app\core\account\services" />
-      <Folder Include="app\core\config" />
-      <Folder Include="app\core\user\controllers" />
+      <Folder Include="app\core\console\controllers" />
       <Folder Include="storage\logs" />
     </ItemGroup>
 
