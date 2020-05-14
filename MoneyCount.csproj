@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="app\core\account\contracts" />
+      <Folder Include="app\core\account\controllers" />
+      <Folder Include="app\core\account\repositories" />
+      <Folder Include="app\core\account\services" />
+      <Folder Include="app\core\config" />
+      <Folder Include="app\core\user\controllers" />
+      <Folder Include="storage\logs" />
+    </ItemGroup>
+
+</Project>

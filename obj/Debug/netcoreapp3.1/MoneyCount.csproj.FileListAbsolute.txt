@@ -1,0 +1,11 @@
+C:\Users\hopel\RiderProjects\MoneyCount\MoneyCount\bin\Debug\netcoreapp3.1\MoneyCount.exe
+C:\Users\hopel\RiderProjects\MoneyCount\MoneyCount\bin\Debug\netcoreapp3.1\MoneyCount.deps.json
+C:\Users\hopel\RiderProjects\MoneyCount\MoneyCount\bin\Debug\netcoreapp3.1\MoneyCount.runtimeconfig.json
+C:\Users\hopel\RiderProjects\MoneyCount\MoneyCount\bin\Debug\netcoreapp3.1\MoneyCount.runtimeconfig.dev.json
+C:\Users\hopel\RiderProjects\MoneyCount\MoneyCount\bin\Debug\netcoreapp3.1\MoneyCount.dll
+C:\Users\hopel\RiderProjects\MoneyCount\MoneyCount\bin\Debug\netcoreapp3.1\MoneyCount.pdb
+C:\Users\hopel\RiderProjects\MoneyCount\MoneyCount\obj\Debug\netcoreapp3.1\MoneyCount.csprojAssemblyReference.cache
+C:\Users\hopel\RiderProjects\MoneyCount\MoneyCount\obj\Debug\netcoreapp3.1\MoneyCount.AssemblyInfoInputs.cache
+C:\Users\hopel\RiderProjects\MoneyCount\MoneyCount\obj\Debug\netcoreapp3.1\MoneyCount.AssemblyInfo.cs
+C:\Users\hopel\RiderProjects\MoneyCount\MoneyCount\obj\Debug\netcoreapp3.1\MoneyCount.dll
+C:\Users\hopel\RiderProjects\MoneyCount\MoneyCount\obj\Debug\netcoreapp3.1\MoneyCount.pdb

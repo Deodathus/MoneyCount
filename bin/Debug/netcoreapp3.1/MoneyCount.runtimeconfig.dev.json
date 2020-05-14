@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\hopel\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\hopel\\.nuget\\packages"
+    ]
+  }
+}
