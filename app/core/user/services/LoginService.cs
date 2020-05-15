@@ -9,9 +9,14 @@ namespace MoneyCount.app.core.user.services
     {
         public static int LoggedUserId;
         
-        private readonly IUserRepository _userRepository;
+        private IUserRepository _userRepository;
 
         public LoginService(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
+        public void SetUserRepository(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }

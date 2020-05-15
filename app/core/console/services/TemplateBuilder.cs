@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using MoneyCount.app.core.config.enums;
 using MoneyCount.app.core.console.contracts.services;
 
-namespace MoneyCount.app.core
+namespace MoneyCount.app.core.console.services
 {
     public static class TemplateBuilder
     {

@@ -9,12 +9,22 @@ namespace MoneyCount.app.core.account.services
 {
     public class ManageService : IManageService
     {
-        private readonly IUserRepository _userRepository;
-        private readonly IAccountRepository _accountRepository;
+        private IUserRepository _userRepository;
+        private IAccountRepository _accountRepository;
 
         public ManageService(IUserRepository userRepository, IAccountRepository accountRepository)
         {
             _userRepository = userRepository;
+            _accountRepository = accountRepository;
+        }
+
+        public void SetUserRepository(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
+        public void SetAccountRepository(IAccountRepository accountRepository)
+        {
             _accountRepository = accountRepository;
         }
 

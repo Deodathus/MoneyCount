@@ -6,9 +6,14 @@ namespace MoneyCount.app.core.user.services
 {
     public class RegisterService : IRegisterService
     {
-        private readonly IUserRepository _userRepository;
+        private IUserRepository _userRepository;
 
         public RegisterService(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
+        public void SetUserRepository(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
