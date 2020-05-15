@@ -5,10 +5,12 @@ namespace MoneyCount.app.core
 {
     public class ApplicationState
     {
+        private static IStateController _previousStateController;
         private static IStateController _stateController;
 
         public static void SetStateController(IStateController stateController)
         {
+            _previousStateController = _stateController;
             _stateController = stateController;
         }
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using MoneyCount.app.core.config.enums.console;
-using MoneyCount.app.core.console;
 using MoneyCount.app.core.user.contracts.services;
 using MoneyCount.app.core.user.dto;
 using MoneyCount.app.core.user.states.register;
@@ -39,7 +38,7 @@ namespace MoneyCount.app.core.user.controllers
                 StateController.State = new RegisterUnsuccessState();
             }
 
-            Handler.SetRenderedTemplate(Handler.GetTemplateRenderer().Render(ConsoleTemplateFile.TemplateFilePath, args));
+            TemplateBuilder.BuildTemplate(ConsoleTemplateFile.TemplateFilePath, args);
         }
     }
 }

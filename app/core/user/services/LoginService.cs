@@ -23,9 +23,14 @@ namespace MoneyCount.app.core.user.services
 
         public bool CheckPassword(string name, string password)
         {
-            User user = _userRepository.GetUserByName(name);
+            if (UserExists(name))
+            {
+                User user = _userRepository.GetUserByName(name);
+                
+                return user.CheckPassword(password);
+            }
 
-            return user.CheckPassword(password);
+            return false;
         }
 
         public void LogIn(string name, string password)

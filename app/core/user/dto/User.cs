@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using MoneyCount.app.core.account.dto;
 
 namespace MoneyCount.app.core.user.dto
 {
@@ -9,21 +8,12 @@ namespace MoneyCount.app.core.user.dto
         private string _name;
         private readonly string _password;
 
-        private Account _account;
-
         public User(string name, string password, int id = default)
         {
             _name = name;
             _password = password;
 
             _id = id;
-
-            RegisterAccount();
-        }
-
-        private void RegisterAccount()
-        {
-            _account = new Account(this);
         }
 
         public int GetId()

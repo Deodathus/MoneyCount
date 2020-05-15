@@ -1,4 +1,5 @@
-﻿using MoneyCount.app.core.contracts.state;
+﻿using MoneyCount.app.core.config.enums.console;
+using MoneyCount.app.core.contracts.state;
 using MoneyCount.app.core.user.controllers;
 using MoneyCount.app.core.user.states.login;
 
@@ -47,6 +48,7 @@ namespace MoneyCount.app.core.user
             {
                 case 1:
                     ApplicationState.SetStateController((account.StateController) Builder.GetStateController(typeof(account.StateController)));
+                    TemplateBuilder.BuildTemplate(ConsoleTemplateFile.AccountTemplateFilePath);
                     
                     break;
             }

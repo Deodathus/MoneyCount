@@ -1,5 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using MoneyCount.app.core.account.contracts.repositories;
+using MoneyCount.app.core.account.contracts.services;
+using MoneyCount.app.core.account.controllers;
+using MoneyCount.app.core.account.repositories;
+using MoneyCount.app.core.account.services;
 using MoneyCount.app.core.filesystem.contracts.services;
 using MoneyCount.app.core.filesystem.services;
 using MoneyCount.app.core.user;
@@ -47,6 +52,9 @@ namespace MoneyCount.app.core
         {
             IUserRepository ufr = new FileUserRepository((IFileService) MainServices[typeof(IFileService).ToString()]);
             Repositories.Add(typeof(IUserRepository).ToString(), ufr);
+            
+            IAccountRepository afr = new FileAccountRepository();
+            Repositories.Add(typeof(IAccountRepository).ToString(), afr);
         }
 
         private static void BuildServices()
@@ -56,6 +64,12 @@ namespace MoneyCount.app.core
             
             ILoginService uls = new LoginService((IUserRepository) Repositories[typeof(IUserRepository).ToString()]);
             Services.Add(typeof(ILoginService).ToString(), uls);
+            
+            IManageService ams = new ManageService(
+                (IUserRepository) Repositories[typeof(IUserRepository).ToString()],
+                (IAccountRepository) Repositories[typeof(IAccountRepository).ToString()]
+            );
+            Services.Add(typeof(IManageService).ToString(), ams);
         }
 
         private static void BuildControllers()
@@ -65,6 +79,9 @@ namespace MoneyCount.app.core
             
             LoginController ulc = new LoginController((ILoginService) Services[typeof(ILoginService).ToString()]);
             Controllers.Add(typeof(LoginController).ToString(), ulc);
+            
+            AccountManageController amc = new AccountManageController((IManageService) Services[typeof(IManageService).ToString()]);
+            Controllers.Add(typeof(AccountManageController).ToString(), amc);
         }
 
         public static object GetMainService(Type type)

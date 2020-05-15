@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoneyCount.app.core.account.controllers;
+using MoneyCount.app.core.config.enums.console;
 using MoneyCount.app.core.contracts.state;
 
 namespace MoneyCount.app.core.account
@@ -9,7 +10,16 @@ namespace MoneyCount.app.core.account
         
         public void Handle(int option)
         {
+            TemplateBuilder.BuildTemplate(ConsoleTemplateFile.AccountTemplateFilePath);
             
+            switch (option)
+            {
+                case 1:
+                    AccountManageController acm = (AccountManageController) Builder.GetController(typeof(AccountManageController));
+                    acm.Add();
+                    
+                    break;
+            }
         }
     }
 }
