@@ -3,6 +3,7 @@ using MoneyCount.app.core.console.services;
 using MoneyCount.app.core.contracts.state;
 using MoneyCount.app.core.user.controllers;
 using MoneyCount.app.core.user.states.login;
+using MoneyCount.app.core.user.states.register;
 
 namespace MoneyCount.app.core.user
 {
@@ -17,7 +18,7 @@ namespace MoneyCount.app.core.user
 
         public void Handle(int option)
         {
-            if (State is UnLoggedInState)
+            if (State is UnLoggedInState || State is RegisterSuccessState || State is RegisterUnsuccessState)
             {
                 UnLoggedHandle(option);
             } else if (State is LoggedInState)

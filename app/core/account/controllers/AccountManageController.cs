@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using MoneyCount.app.core.account.contracts.services;
+﻿using MoneyCount.app.core.account.contracts.services;
+using MoneyCount.app.core.console.services;
 
 namespace MoneyCount.app.core.account.controllers
 {
@@ -15,8 +15,9 @@ namespace MoneyCount.app.core.account.controllers
         public void Add()
         {
             _manageService.Add();
-            
-            Dictionary<string, object> args = new Dictionary<string, object>();
+
+            TemplateBuilder.AddArgument("message", "Account was created.");
+            TemplateBuilder.RebuildCurrentTemplate();
         }
     }
 }

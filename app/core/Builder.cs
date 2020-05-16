@@ -53,7 +53,10 @@ namespace MoneyCount.app.core
             IUserRepository ufr = new FileUserRepository((IFileService) MainServices[typeof(IFileService).ToString()]);
             Repositories.Add(typeof(IUserRepository).ToString(), ufr);
             
-            IAccountRepository afr = new FileAccountRepository();
+            IAccountRepository afr = new FileAccountRepository(
+                (IUserRepository) Repositories[typeof(IUserRepository).ToString()],
+                (IFileService) MainServices[typeof(IFileService).ToString()]
+                );
             Repositories.Add(typeof(IAccountRepository).ToString(), afr);
         }
 
@@ -70,6 +73,9 @@ namespace MoneyCount.app.core
                 (IAccountRepository) Repositories[typeof(IAccountRepository).ToString()]
             );
             Services.Add(typeof(IManageService).ToString(), ams);
+
+            IListService als = new ListService((IAccountRepository) Repositories[typeof(IAccountRepository).ToString()]);
+            Services.Add(typeof(IListService).ToString(), als);
         }
 
         private static void BuildControllers()
@@ -82,6 +88,9 @@ namespace MoneyCount.app.core
             
             AccountManageController amc = new AccountManageController((IManageService) Services[typeof(IManageService).ToString()]);
             Controllers.Add(typeof(AccountManageController).ToString(), amc);
+            
+            ListController alc = new ListController((IListService) Services[typeof(IListService).ToString()]);
+            Controllers.Add(typeof(ListController).ToString(), alc);
         }
 
         public static object GetMainService(Type type)

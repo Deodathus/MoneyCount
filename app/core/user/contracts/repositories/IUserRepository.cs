@@ -5,6 +5,8 @@ namespace MoneyCount.app.core.user.contracts.repositories
     public interface IUserRepository
     {
         public void Add(User user);
+
+        public bool UserExistsById(int id);
         
         public bool UserExistsByName(string name);
 

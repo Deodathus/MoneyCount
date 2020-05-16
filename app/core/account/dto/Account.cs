@@ -4,6 +4,7 @@ namespace MoneyCount.app.core.account.dto
 {
     public class Account
     {
+        private readonly int _id;
         private readonly User _user;
         private int _balance;
 

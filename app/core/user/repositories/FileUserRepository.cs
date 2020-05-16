@@ -13,7 +13,6 @@ namespace MoneyCount.app.core.user.repositories
     public class FileUserRepository : IUserRepository
     {
         private static int _count;
-        
         private IFileService _fileService;
 
         public FileUserRepository(IFileService fileService)
@@ -79,6 +78,29 @@ namespace MoneyCount.app.core.user.repositories
             }
 
             return 1;
+        }
+
+        private XDocument GetUsersFile()
+        {
+            return XDocument.Load(UsersFileSettings.FilePath);
+        }
+
+        public bool UserExistsById(int id)
+        {
+            if (_fileService.FileExist(UsersFileSettings.FilePath))
+            {
+                XDocument usersList = GetUsersFile();
+
+                IEnumerable<XElement> foundedUsers = from user in usersList.Element("users")?.Elements("user")
+                    where Convert.ToInt32(user.Element("id")?.Value) == id
+                    select user;
+                if (foundedUsers.Any(u => Convert.ToInt32(u.Element("id").Value) == id))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public bool UserExistsByName(string name)

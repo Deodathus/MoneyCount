@@ -20,6 +20,11 @@ namespace MoneyCount.app.core.account
                     acm.Add();
                     
                     break;
+                case 3:
+                    ListController alc = (ListController) Builder.GetController(typeof(ListController));
+                    alc.List();
+
+                    break;
             }
         }
     }

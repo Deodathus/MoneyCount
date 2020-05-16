@@ -8,7 +8,7 @@ namespace MoneyCount.app.core.account.contracts.repositories
 
         public bool AccountExistsById(int id);
 
-        public Account GetAccountById(int id);
+        public Account GetAccountByUserId(int id);
 
         public void RemoveById(int id);
     }
