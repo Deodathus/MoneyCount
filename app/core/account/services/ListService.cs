@@ -27,9 +27,7 @@ namespace MoneyCount.app.core.account.services
 
         public List<Account> GetAccountsList()
         {
-            Account account = _accountRepository.GetAccountByUserId(LoginService.LoggedUserId);
-
-            List<Account> accounts = new List<Account> {account};
+            List<Account> accounts = _accountRepository.GetAccountsByUserId(LoginService.LoggedUserId);
 
             return accounts;
         }

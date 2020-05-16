@@ -80,7 +80,7 @@ namespace MoneyCount.app.core.console.services
             
             Console.Clear();
 
-            Console.WriteLine(_template);
+            Handler.Write(_template);
             
             _customArguments = new Dictionary<string, object>();
         }
@@ -117,13 +117,13 @@ namespace MoneyCount.app.core.console.services
         {
             if (args.Count <= 0)
             {
-                Console.WriteLine("Dictionary with arguments is empty.");
+                Handler.Write("Dictionary with arguments is empty.");
             }
             else
             {
                 foreach (KeyValuePair<string, object> argument in args)
                 {
-                    Console.WriteLine($"Name: {argument.Key}, Value: {argument.Value}");
+                    Handler.Write($"Name: {argument.Key}, Value: {argument.Value}");
                 }
             }
         }

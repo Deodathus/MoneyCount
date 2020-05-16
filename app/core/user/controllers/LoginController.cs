@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MoneyCount.app.core.config.enums.console;
+using MoneyCount.app.core.console;
 using MoneyCount.app.core.console.services;
 using MoneyCount.app.core.user.contracts.services;
 using MoneyCount.app.core.user.services;
@@ -20,12 +20,12 @@ namespace MoneyCount.app.core.user.controllers
         {
             string templatePath = ConsoleTemplateFile.TemplateFilePath;
             
-            Console.WriteLine("Enter your name:");
-            string name = Console.ReadLine();
+            Handler.Write("Enter your name:");
+            string name = Handler.Read().ToString();
             Dictionary<string, object> args = new Dictionary<string, object>();
             
-            Console.WriteLine("Enter your password:");
-            string pass = Console.ReadLine();
+            Handler.Write("Enter your password:");
+            string pass = Handler.Read().ToString();
             if (_loginServiceService.CheckPassword(name, pass))
             {
                 _loginServiceService.LogIn(name, pass);

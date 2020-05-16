@@ -6,12 +6,18 @@ namespace MoneyCount.app.core.account.dto
     {
         private readonly int _id;
         private readonly User _user;
-        private int _balance;
+        private readonly int _balance;
 
-        public Account(User user, int balance)
+        public Account(User user, int balance, int id = default)
         {
+            _id = id;
             _user = user;
             _balance = balance;
+        }
+
+        public int GetId()
+        {
+            return _id;
         }
 
         public User GetUser()

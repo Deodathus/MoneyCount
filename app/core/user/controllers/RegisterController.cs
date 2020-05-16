@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MoneyCount.app.core.config.enums.console;
+using MoneyCount.app.core.console;
 using MoneyCount.app.core.console.services;
 using MoneyCount.app.core.user.contracts.services;
 using MoneyCount.app.core.user.dto;
@@ -19,10 +20,10 @@ namespace MoneyCount.app.core.user.controllers
 
         public void Do()
         {
-            Console.WriteLine("Enter your name:");
-            string name = Console.ReadLine();
-            Console.WriteLine("Enter your password:");
-            string password = Console.ReadLine();
+            Handler.Write("Enter your name:");
+            string name = Handler.Read().ToString();
+            Handler.Write("Enter your password:");
+            string password = Handler.Read().ToString();
             User user = new User(name, password);
 
             Dictionary<string, object> args = new Dictionary<string, object>();

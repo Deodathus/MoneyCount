@@ -39,7 +39,7 @@ namespace MoneyCount.app.core.user.repositories
             }
             
             AddUserToFile(user);
-            }
+        }
 
         private void CreateUsersFile()
         {

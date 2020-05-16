@@ -36,5 +36,10 @@ namespace MoneyCount.app.core.account.services
 
             _accountRepository.Add(account);
         }
+
+        public void DeleteById(int id)
+        {
+            _accountRepository.RemoveById(id);
+        }
     }
 }

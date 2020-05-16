@@ -11,7 +11,7 @@ namespace MoneyCount.app.core.console
 
             do
             {
-                Console.WriteLine(TemplateBuilder.GetTemplate());
+                Write(TemplateBuilder.GetTemplate());
                 int chosenOption = GetUserInput();
                 
                 switch (chosenOption)
@@ -45,6 +45,26 @@ namespace MoneyCount.app.core.console
             }
 
             return 404;
+        }
+        
+        public static void Write(string message)
+        {
+            Console.WriteLine(message);
+        }
+
+        public static void Write(string message, ConsoleColor colorToDisplay)
+        {
+            ConsoleColor defaultColor = Console.ForegroundColor;
+
+            Console.ForegroundColor = colorToDisplay;
+            Console.WriteLine(message);
+
+            Console.ForegroundColor = defaultColor;
+        }
+
+        public static object Read()
+        {
+            return Console.ReadLine();
         }
     }
 }

@@ -3,5 +3,7 @@
     public interface IManageService
     {
         public void Add();
+
+        public void DeleteById(int id);
     }
 }
